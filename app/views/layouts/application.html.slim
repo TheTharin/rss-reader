@@ -1,0 +1,25 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    title
+      = @head_title or "RSS reader"
+    = yield(:head)
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+
+  body
+    = render 'shared/main_menu'
+
+    .container-fluid
+      .row
+        .col-sm-12
+          - unless flash.blank?
+            = raw flash_messages
+      .row
+        .col-md-12
+          = yield
+      .footer.col-md-12
