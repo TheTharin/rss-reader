@@ -16,15 +16,20 @@ class FetchPostsService
     def perform
       feeds = Feed.default_order
       posts = []
+      threads = []
 
       feeds.each do |feed|
-        open(feed.url) do |rss|
-          feed = RSS::Parser.parse(rss)
-          feed.channel.items.each do |item|
-            posts << Post.new(item.title, item.link, item.description, item.pubDate)
+        threads << Thread.new do
+          open(feed.url) do |rss|
+            parsed_feed = RSS::Parser.parse(rss)
+            parsed_feed.channel.items.each do |item|
+              posts << Post.new(item.title, item.link, item.description, item.pubDate)
+            end
           end
         end
       end
+
+      threads.map(&:join)
 
       posts.sort_by { |post| post.pub_date }.reverse
     end
