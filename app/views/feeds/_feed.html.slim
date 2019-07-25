@@ -1,10 +1,9 @@
 tr
-  td = feed.id
   td = feed.title
   td = feed.url
   td
-    .btn-group.actions_btns
-      = link_to edit_feed_path(feed), class: 'btn btn-default' do
-        .glyphicon.glyphicon-pencil
-      = link_to feed, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } do
-        .glyphicon.glyphicon-remove
+    .btn-group
+      = link_to edit_feed_path(feed), class: 'btn btn-success mr-1' do
+          i.fas.fa-pencil-alt
+      = link_to feed, method: :delete, class: 'btn btn-danger ml-1', data: { confirm: 'Are you sure?' } do
+          i.fas.fa-trash

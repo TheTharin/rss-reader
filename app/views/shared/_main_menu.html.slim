@@ -1,12 +1,8 @@
-nav.navbar.main.navbar-inverse.navbar-static-top
-  .container-fluid
-    .navbar-header
-      button.navbar-toggle.collapsed data-target="#main_menu" data-toggle="collapse" type="button"
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-    #main_menu.collapse.navbar-collapse
-        ul.nav.navbar-nav
-          li = link_to 'Feeds', feeds_path
-          li = link_to 'Reader', reader_path
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.sticky-top
+  .navbar-brand Rss
+  button.navbar-toggler type='button' data-toggle="collapse" data-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation'
+    span.navbar-toggler-icon
+  #navbarNavDropdown.collapse.navbar-collapse
+    ul.navbar-nav
+      li.nav-item = link_to 'Feeds', feeds_path, class: 'nav-link'
+      li.nav-item = link_to 'Reader', reader_path, class: 'nav-link'

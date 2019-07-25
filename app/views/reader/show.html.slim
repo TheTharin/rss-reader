@@ -1,0 +1,20 @@
+- colors = %w(#df494e #68a5b7 #8f978e #d8b6ad #677b94 #677b94 #66be98 #fcd06d #f8a427 #d42b14)
+
+.col-md-8
+  h1.border-bottom.border-gray.pb-2.mb-0 Recent Posts
+
+  br
+  = paginate @posts, theme: 'twitter-bootstrap-4'
+
+  - @posts.each do |post|
+    div.media.mt-3.border-bottom
+      svg.placeholder-img
+        title Placeholder
+        rect.placeholder-rect fill=colors.sample
+      div.media-text
+        = link_to post.link, class: 'title-text', target: '_blank' do
+          - post.title
+        div.mt-2 #{post.description.html_safe}
+
+  br
+  = paginate @posts, theme: 'twitter-bootstrap-4'

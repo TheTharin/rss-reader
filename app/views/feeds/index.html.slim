@@ -3,10 +3,9 @@
   .toolbar
     = link_to 'Add a new Feed', new_feed_path, class: 'btn btn-success'
 
-  table.table.table-bordered.table-striped
+  table.table.table-bordered.table-striped.mt-3
     thead
       tr
-        th Id
         th Title
         th Url
         th
@@ -15,4 +14,4 @@
       = render @feeds if @feeds
 
   br
-  = paginate @feeds, theme: 'twitter-bootstrap-3'
+  = paginate @feeds, theme: 'twitter-bootstrap-4'

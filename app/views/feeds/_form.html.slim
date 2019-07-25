@@ -1,13 +1,15 @@
 = simple_form_for @feed_form,
   url: (@feed_form.persisted? ? feed_path(@feed) : feeds_path),
-  as: :feed, wrapper: :horizontal_form, html: { class: 'form-horizontal inputs-sm' } do |f|
-  = f.input :title, input_html: { disabled: true }
-  = f.input :url, required: true
+  as: :feed, html: { class: 'form-horizontal inputs-sm input-form' } do |f|
+  .form-group
+    = f.input :title, input_html: { disabled: true, class: 'form-control'}
+  .form-group
+    = f.input :url, input_html: { class: 'form-control'}, required: true
 
   .row
     .col-sm-offset-3.col-sm-9
       = f.button :submit, class: 'btn-primary', value: 'Save'
-      = link_to "Cancel", :back, class: 'btn btn-primary margin_left_btn'
+      = link_to "Cancel", :back, class: 'btn btn-primary ml-2'
 
       - if @feed_form.persisted?
         = link_to 'Delete', @feed_form.feed,

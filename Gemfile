@@ -6,7 +6,7 @@ ruby '2.6.2'
 source 'https://rubygems.org'
 
 gem 'bootsnap', '>= 1.1.0'
-gem 'bootstrap-sass', '~> 3.4.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'rails', '~> 5.2.3'
 gem 'rss'
@@ -17,10 +17,12 @@ gem 'responders'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'mini_form'
+gem 'coffee-rails'
+gem 'font-awesome-sass', '~> 5.9.0'
 
 # pagination
 gem 'kaminari'
-gem 'bootstrap-kaminari-views'
+gem 'bootstrap4-kaminari-views'
 
 # prettier than HAML
 gem 'slim-rails'
