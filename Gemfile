@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.6.2'
+ruby '2.6.1'
 
 source 'https://rubygems.org'
 
@@ -47,6 +47,7 @@ group :test, :development do
   gem 'pry-theme'
 
   gem 'capybara', '>= 2.15'
+  gem 'selenium-webdriver'
   gem 'factory_bot_rails'
   gem 'webmock'
 end
@@ -55,4 +56,5 @@ group :test do
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
   gem 'webdrivers', '~> 3.0'
+  gem 'database_cleaner'
 end

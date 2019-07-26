@@ -15,11 +15,9 @@ class FeedForm
   def perform(attributes)
     self.attributes = attributes.merge(title: parsed_title(attributes[:url]))
 
-    if valid?
-      feed.save!
-    else
-      false
-    end
+    return false unless valid?
+
+    feed.save!
   end
 
   def self.model_name

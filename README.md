@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version - 2.6.2
 
-Things you may want to cover:
+* Rails version - 5.2.3
 
-* Ruby version
+### Running locally
 
-* System dependencies
+To test locally, run the following in your terminal:
 
-* Configuration
+1. Clone repo locally
+2. `bundle install`
+3. `bundle exec rake db:create`
+4. `bundle exec rake db:migrate`
+5. `bundle exec rails s`
+6. Open your browser to `localhost:3000`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To invoke specs, run `rake` in terminal.

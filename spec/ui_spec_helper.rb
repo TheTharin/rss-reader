@@ -4,6 +4,7 @@ ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
+require 'webmock/rspec'
 require 'capybara/rails'
 require 'selenium/webdriver'
 
@@ -11,6 +12,10 @@ require_relative 'ui_lib/page_objects'
 
 RSpec.configure do |config|
   config.tty = true
+  config.mock_with :rspec
+
+  config.include FactoryBot::Syntax::Methods
+  config.include ApplicationHelper
 
   config.after(:suite) do
     FileUtils.rm_rf Rails.root.join('spec/support/uploads')
@@ -18,7 +23,8 @@ RSpec.configure do |config|
   end
 
   config.before(:all) do
-    WebMock.allow_net_connect!
+    WebMock.disable_net_connect!(allow_localhost: true,
+                                 allow: 'chromedriver.storage.googleapis.com')
   end
 
   config.filter_run :focus
@@ -27,6 +33,27 @@ RSpec.configure do |config|
 
   config.after :each do # после каждого прогона тестов очищаем сессию и куки в ней
     Capybara.current_session.cleanup!
+  end
+  config.use_transactional_fixtures = false
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 end
 
@@ -43,5 +70,4 @@ end
 Capybara.configure do |config|
   config.default_max_wait_time = 5
   config.javascript_driver = :chrome
-  config.app_host = 'https://it:stoege@beta00.100ege.ru'
 end
