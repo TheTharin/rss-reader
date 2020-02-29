@@ -35,7 +35,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  gem 'puma', '~> 3.11'
+  gem 'puma', '~> 3.12'
   gem 'rubocop', '~> 0.63.1'
 end
 
